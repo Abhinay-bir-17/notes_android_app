@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".UpdateActivity">
+    tools:context=".UpdateNoteActivity">
 
     <TextView
         android:id="@+id/editNoteHeading"
@@ -22,19 +22,28 @@
         android:textColor="@color/orange"
         android:textSize="34sp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageView
         android:id="@+id/updateSaveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_width="24dp"
+        android:layout_height="34dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/baseline_done_24"
-        android:backgroundTint="@color/orange"
-        />
+        android:layout_alignTop="@id/editNoteHeading"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/baseline_done_24" />
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/updateSaveButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:src="@drawable/baseline_done_24"-->
+<!--        android:backgroundTint="@color/orange"-->
+<!--        />-->
     <!--        android:layout_alignTop="@id/addNoteHeading" -->
     <!--    <ImageView-->
     <!--        android:id="@+id/saveButton"-->
