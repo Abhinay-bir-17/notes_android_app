@@ -62,14 +62,13 @@
         android:id="@+id/contentEditText"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:gravity="top"
-        android:padding="12dp"
-        android:textSize="20sp"
-        android:layout_marginTop="12dp"
-        android:hint="Enter the description"
-        android:background="@drawable/orange_border"
         android:layout_below="@id/titleEditText"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/orange_border"
         android:fontFamily="@font/poppins"
-        />
+        android:gravity="top"
+        android:hint="Enter the description"
+        android:padding="12dp"
+        android:textSize="20sp" />
 
 </RelativeLayout>

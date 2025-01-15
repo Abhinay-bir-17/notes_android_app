@@ -16,16 +16,17 @@ class NotesDatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableQuery = "CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT, $COLUMN_CONTENT TEXT)"
         db?.execSQL(createTableQuery)
-
     }
     override fun onUpgrade (db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         val dropTableQuery = "DROP TABLE IF EXISTS $TABLE_NAME"
         db?.execSQL(dropTableQuery)
         onCreate(db)
+        // here we drop a table with similar table name if it exists, then we call to create
+        // a new table using onCreate(db)
     }
     fun insertNote (note: Note){
-        val db = writableDatabase
-        val values = ContentValues().apply{
+        val db = writableDatabase // means db can be modified
+        val values = ContentValues().apply{ //contentValues is a class that is used to store vals
              put(COLUMN_TITLE, note.title)
              put(COLUMN_CONTENT, note.content)
         }
@@ -33,11 +34,14 @@ class NotesDatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_
         db.close()
     }
 
-
+    //The function returns a List of Note objects.
+    //Return Type: List<Note>, meaning a list containing objects of the Note class.
     fun getAllNotes(): List<Note> {
         val notesList = mutableListOf <Note>()
         val db = readableDatabase
         val query = "SELECT * FROM $TABLE_NAME"
+        //Executes the SQL query and returns a Cursor object that points to the result set.
+        //cursor: Allows iteration over the rows in the result set.
         val cursor = db.rawQuery (query, null)
         while (cursor.moveToNext()){
             val id = cursor.getInt(cursor.getColumnIndexOrThrow (COLUMN_ID))
@@ -75,6 +79,13 @@ class NotesDatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_
         cursor.close()
         db.close()
         return Note(id, title, content)
+    }
+    fun deleteNote(noteId: Int){
+        val db = writableDatabase
+        val whereClause  = "$COLUMN_ID =?"
+        val whereArgs = arrayOf(noteId.toString())
+        db.delete(TABLE_NAME,whereClause,whereArgs)
+        db.close()
     }
 
 }

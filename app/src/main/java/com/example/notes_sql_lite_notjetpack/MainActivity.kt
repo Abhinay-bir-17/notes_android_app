@@ -11,6 +11,7 @@ import com.example.notes_sql_lite_notjetpack.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    // to access fns in ndh
     private lateinit var db: NotesDatabaseHelper
     private lateinit var notesAdapter: NotesAdapter
 
@@ -20,8 +21,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         db = NotesDatabaseHelper(this)
-
+        //seet up adapter
         notesAdapter = NotesAdapter(db.getAllNotes(),  this)
+
         binding.notesRecyclerView.layoutManager= LinearLayoutManager( this)
         binding.notesRecyclerView.adapter = notesAdapter
 

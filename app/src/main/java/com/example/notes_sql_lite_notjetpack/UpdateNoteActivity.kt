@@ -25,9 +25,11 @@ class UpdateNoteActivity : AppCompatActivity() {
             finish()
             return
         }
+        // display the old data to edit
         val note = db.getNoteByID((noteId))
         binding.updateTitleEditText.setText(note.title)
         binding.updateContentEditText.setText(note.content)
+
         binding.updateSaveButton.setOnClickListener {
             val newTitle = binding.updateTitleEditText.text.toString()
             val newContent = binding.updateContentEditText.text.toString()
